@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MapGenerator : MonoBehaviour
+public class RoomGenerator : MonoBehaviour
 {
     public Tilemap tilemap;
     public TileBase floorTile;
@@ -20,11 +20,11 @@ public class MapGenerator : MonoBehaviour
 
     void ChooseRandomLayout()
     {
-        int choice = Random.Range(2, 2);
+        int choice = Random.Range(0, 0);
 
-        if (choice == 0) Hallway();
+        if (choice == 0) HallwayDL();
         if (choice == 1) ArenaUDLR();
-        if (choice == 2) Crossroads();
+        if (choice == 2) CrossroadsUDL();
         if (choice == 3) PillarRoomUDLR();
     }
 
@@ -50,7 +50,113 @@ public class MapGenerator : MonoBehaviour
     }
 
     // Layout 1
-    void Hallway()
+    void HallwayUD()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+
+        for (int y = 0; y < HEIGHT; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+    }
+    void HallwayUL()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+
+        for (int y = 7; y < HEIGHT; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 0; x < 18; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void HallwayUR()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+        for (int y = 7; y < HEIGHT; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 14; x < WIDTH; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void HallwayDL()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+
+        for (int y = 0; y < 11; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 0; x < 18; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void HallwayDR()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+        for (int y = 0; y < 11; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 14; x < WIDTH; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void HallwayLR()
     {
         map = new int[WIDTH, HEIGHT];
 
@@ -450,7 +556,7 @@ public class MapGenerator : MonoBehaviour
         map[17, 0] = 0;
     }
     // Layout 4
-    void Crossroads()
+    void CrossroadsUDL()
     {
         map = new int[WIDTH, HEIGHT];
 
@@ -466,6 +572,75 @@ public class MapGenerator : MonoBehaviour
             map[17, y] = 0;
         }
         for (int x = 14; x < WIDTH; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void CrossroadsUDR()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+
+        for (int y = 0; y < HEIGHT; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 0; x < 17; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void CrossroadsULR()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+
+        for (int y = 7; y < HEIGHT; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 0; x < WIDTH; x++)
+        {
+            map[x, 7] = 0;
+            map[x, 8] = 0;
+            map[x, 9] = 0;
+            map[x, 10] = 0;
+        }
+    }
+    void CrossroadsDLR()
+    {
+        map = new int[WIDTH, HEIGHT];
+
+        for (int x = 0; x < WIDTH; x++)
+            for (int y = 0; y < HEIGHT; y++)
+                map[x, y] = 1;
+
+        for (int y = 0; y < 10; y++)
+        {
+            map[14, y] = 0;
+            map[15, y] = 0;
+            map[16, y] = 0;
+            map[17, y] = 0;
+        }
+        for (int x = 0; x < WIDTH; x++)
         {
             map[x, 7] = 0;
             map[x, 8] = 0;
